@@ -33,6 +33,25 @@ public class FStack {
         this.head = n;
     }
 
+    public Integer pop() {
+        if (this.head == null) {
+            return null;
+        }
+
+        Node n = this.head;
+        Integer r = this.head.value;
+        this.head = this.head.next;
+        n.next = null;
+        return r;
+    }
+    
+    public Integer peek() {
+        if (this.head == null) {
+            return null;
+        }
+        return this.head.value;
+    }
+
     @Override
     public String toString() {
         // I know, I'm using array list here....
