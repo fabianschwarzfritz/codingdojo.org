@@ -96,5 +96,38 @@ public class BinaryTreeTest {
         boolean contained = t.searchBFS(100);
         assertEquals(false, contained);
     }
+
+    @Test
+    public void compareBinaryTreeSame() {
+        BinaryTree<Integer> one = sampleTree();
+        BinaryTree<Integer> two = sampleTree();
+        boolean same = one.compareBinaryTree(two);
+        assertEquals(true, same);
+    }
+
+    @Test
+    public void compareBinaryTreeNotSame() {
+        BinaryTree<Integer> one = sampleTree();
+        BinaryTree<Integer> two = sampleTree();
+        two.root.left.right.value = 600;
+        boolean same = one.compareBinaryTree(two);
+        assertEquals(false, same);
+    }
+
+    @Test
+    public void compareEmptyTree() {
+        assertEquals(true, 
+            new BinaryTree<Integer>().compareBinaryTree(new BinaryTree<Integer>())
+        );
+    }
+
+    @Test
+    public void compateBinaryTreeNotSame2() {
+        BinaryTree<Integer> one = sampleTree();
+        BinaryTree<Integer> two = sampleTree();
+        two.root.left.right = null;
+        boolean same = one.compareBinaryTree(two);
+        assertEquals(false, same);
+    }
     
 }

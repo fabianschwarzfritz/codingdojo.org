@@ -10,6 +10,26 @@ public class BinaryTree<T> {
 
     Node<T> root;
 
+    public boolean compareBinaryTree(BinaryTree<T> other) {
+        return recurseCompare(this.root, other.root);
+    }
+
+    public boolean recurseCompare(Node<T> a, Node<T> b) {
+        if (a == null  && b == null) {
+            return true;
+        }
+        if (a == null || b == null) {
+            return false;
+        }
+
+        boolean leftSame = recurseCompare(a.left, b.left);
+        boolean rightSame = recurseCompare(a.right, b.right);
+
+        boolean valueSame = a.value.equals(b.value);
+
+        return leftSame == rightSame && valueSame;
+    };
+
     public boolean searchDFS(T needle) {
         FStack<Node<T>> s = new FStack<>();
 
