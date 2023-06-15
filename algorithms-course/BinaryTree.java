@@ -11,7 +11,30 @@ public class BinaryTree<T extends Comparable<T>> {
     // For the Binary Search tree we need it to be comparable
     Node<T> root;
 
-    public boolean findInBinaryTree(T n) {
+    public void insertBST(T n) {
+        recursiveInsertBST(n, null, root);
+    }
+
+    public void recursiveInsertBST(T n, Node<T> p, Node<T> c) {
+        if (c == null) {
+            if (p.left == null) {
+                p.left = new Node<T>();
+                p.left.value = n;
+            } else if (p.right == null) {
+                p.right = new Node<T>();
+                p.right.value = n;
+            }
+            return;
+        }
+
+        if (c.value.compareTo(n) < 0) {
+            recursiveInsertBST(n, c, c.left);
+        } else {
+            recursiveInsertBST(n, c, c.right);
+        }
+    }
+
+    public boolean findInBinarySearchTree(T n) {
         if (n == null) {
             throw new RuntimeException("n cannot be null");
         }

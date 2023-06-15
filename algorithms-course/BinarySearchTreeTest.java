@@ -44,15 +44,29 @@ public class BinarySearchTreeTest {
     @Test
     public void testBSTFindTrue() {
         BinaryTree<Integer> b = sampleBindarySearchTree();
-        boolean result = b.findInBinaryTree(11);
+        boolean result = b.findInBinarySearchTree(11);
         assertEquals(true, result);
     }
 
     @Test
     public void testBSTFindFalse() {
         BinaryTree<Integer> b = sampleBindarySearchTree();
-        boolean result = b.findInBinaryTree(1123123);
+        boolean result = b.findInBinarySearchTree(1123123);
         assertEquals(false, result);
+    }
+
+    @Test
+    public void testBSTInsert() {
+        BinaryTree<Integer> b = sampleBindarySearchTree();
+        b.insertBST(9);
+
+        BinaryTree<Integer> exp = sampleBindarySearchTree();
+        BinaryTree.Node<Integer> a = new BinaryTree.Node<Integer>();
+        a.value = 9;
+        exp.root.left.right.right = a;
+
+        boolean same = b.compareBinaryTree(exp);
+        assertEquals(true, same);
     }
 
 
