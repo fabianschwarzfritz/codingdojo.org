@@ -6,13 +6,14 @@ class QuickSort {
     }
 
     private void recurse(int[] in, int lo, int hi) {
+        // Base case is we're looking at an empty slice of the array
         if (hi <= lo) {
             return;
         }
 
+        // Swap all and partially sort by comparing to pivot element
         int p = in[hi];
         int idx = lo - 1;
-        // [3 7 5 4]
 
         for (int i = lo; i < hi; i++) {
             if (in[i] <= p) {

@@ -14,9 +14,9 @@ public class QuickSortTest {
 
     @Test
     public void testQuickSort() {
-        int[] in = new int[] {4,8,3,5,32,4,4,5,7,99, 64,36};
+        int[] in = new int[] {4,8,3,5,32,4,4,5,7,99,64,36};
         int[] exp = new int[]{
-            3, 4,4,4,5, 5,7,8,32,36,64,99
+            3,4,4,4,5, 5,7,8,32,36,64,99
         };
         this.test(in, exp);
     }
