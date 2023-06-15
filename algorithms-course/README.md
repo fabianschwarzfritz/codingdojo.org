@@ -3,6 +3,7 @@ TODO's
 
  - Implmement ArrayList
  - Implmement Ringbuffer
+ - Finish Ringbuffer
 
 Links
 ---------
