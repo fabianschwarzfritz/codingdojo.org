@@ -1,24 +1,28 @@
 
-public class FQueue {
+public class FQueue<T> {
 
-    Node head;
-    Node tail;
+    Node<T> head;
+    Node<T> tail;
 
-    public static class Node {
-        int value;
-        Node next;
+    public static class Node<T> {
+        T value;
+        Node<T> next;
 
-        Node(int value) {
+        Node(T value) {
             this.value = value;
         }
     }
 
-    FQueue(int[] initial) {
+    FQueue() {
+
+    }
+
+    FQueue(T[] initial) {
         if (initial.length != 0) {
-            this.head = new Node(initial[0]);
-            Node c = head;
+            this.head = new Node<T>(initial[0]);
+            Node<T> c = head;
             for (int i = 1; i < initial.length; i++) {
-                Node t = new Node(initial[i]);
+                Node<T> t = new Node<T>(initial[i]);
                 c.next = t;
                 c = t;
             }
@@ -26,28 +30,34 @@ public class FQueue {
         }
     }
 
-    public void enqueue(int ne) {
+    public void enqueue(T ne) {
         if (this.tail == null) {
-            this.tail = this.head = new Node(ne);
+            this.tail = this.head = new Node<T>(ne);
         } else {
-            this.tail.next = new Node(ne);
+            this.tail.next = new Node<T>(ne);
             this.tail = this.tail.next;
         }
     }
 
-    public Integer dequeue() {
+    public T dequeue() {
         if (this.head == null) {
             return null;
         }
 
-        int result = this.head.value;
-        Node t = this.head;
+        T result = this.head.value;
+        System.out.println("Result: " + result);
+        Node<T> t = this.head;
         this.head = this.head.next;
         t.next = null;
+
+        if (this.head == null) {
+            this.tail = null;
+        }
+
         return result;
     }
 
-    public Integer peek() {
+    public T peek() {
         if (this.head == null) {
             return null;
         }
@@ -57,7 +67,7 @@ public class FQueue {
     @Override
     public String toString() {
         String r = "[";
-        Node c = this.head;
+        Node<T> c = this.head;
         while (c != null) {
             r += c.value + ", ";
             c = c.next;

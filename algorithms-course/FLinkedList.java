@@ -1,29 +1,32 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FLinkedList {
+public class FLinkedList<T> {
 
-    static class Node {
-        int value;
-        Node next;
+    static class Node<T> {
+        T value;
+        Node<T> next;
     }
 
-    private Node head;
+    private Node<T> head;
     int length;
 
     public int length() {
         return this.length;
     }
 
-    public void append(int item) {
+    public void append(T item) {
         ++length;
         if (this.head == null) {
-            this.head = new Node();
+            this.head = new Node<T>();
             this.head.value = item;
         } else {
-            Node c = this.head;
+            Node<T> c = this.head;
             while (c.next != null) {
                 c = c.next;
             };
-            c.next = new Node();
+            c.next = new Node<T>();
             c.next.value = item;
         }
     }
@@ -32,11 +35,11 @@ public class FLinkedList {
         if(pos < 0) {
             return;
         } else if (pos == 0) {
-            Node c = this.head;
+            Node<T> c = this.head;
             this.head = this.head.next;
             c.next = null;
         } else {
-            Node c = this.head;
+            Node<T> c = this.head;
             for (int i = 0; i < pos - 1; i++) {
                 if (c == null) {
                     return;
@@ -44,7 +47,7 @@ public class FLinkedList {
                 c = c.next;
             }
             if (c.next != null) {
-                Node old = c.next;
+                Node<T> old = c.next;
                 c.next = c.next.next;
                 old.next = null;
             }
@@ -52,12 +55,12 @@ public class FLinkedList {
 
     }
 
-    public int get(int pos) {
+    public T get(int pos) {
         if (pos < 0) {
-            return -1;
+            return null;
         }
 
-        Node c = this.head;
+        Node<T> c = this.head;
         int i = 0;
         while (i < pos && c != null) {
             c = c.next;
@@ -65,13 +68,24 @@ public class FLinkedList {
         }
 
 
-        return c == null ? -1 : c.value;
+        return c == null ? null : c.value;
+    }
+
+    public T[] toArray() {
+        // Yes I know this can explode
+        T f = this.get(0);
+        T[] t = (T[]) Array.newInstance(f.getClass(), this.length);
+
+        for (int i = 0; i < this.length; i++) {
+            t[i] = this.get(i);
+        }
+        return t;
     }
 
     @Override
     public String toString() {
         String r = "[";
-        Node c = this.head;
+        Node<T> c = this.head;
         while (c != null) {
             r += c.value + ",";
             c = c.next;

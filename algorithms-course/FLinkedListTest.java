@@ -6,7 +6,7 @@ public class FLinkedListTest {
 
     @Test
     public void testInsert() {
-        FLinkedList l = new FLinkedList();
+        FLinkedList<Integer> l = new FLinkedList<>();
         l.append(2);
         l.append(1);
         assertEquals("[2,1,]", l.toString());
@@ -14,20 +14,20 @@ public class FLinkedListTest {
 
     @Test
     public void testGet() {
-        FLinkedList l = new FLinkedList();
+        FLinkedList<Integer> l = new FLinkedList<>();
         l.append(1);
         l.append(2);
         l.append(3);
-        assertEquals(1, l.get(0));
-        assertEquals(3, l.get(2));
+        assertEquals(1, l.get(0).intValue());
+        assertEquals(3, l.get(2).intValue());
         // Yes, I know this is a sucky implementation
-        assertEquals(-1, l.get(3));
-        assertEquals(-1, l.get(-1));
+        assertEquals(null, l.get(3));
+        assertEquals(null, l.get(-1));
     }
 
     @Test
     public void testDelete() {
-        FLinkedList l = new FLinkedList();
+        FLinkedList<Integer> l = new FLinkedList<>();
         for (int i = 0; i < 10; i++) {
             l.append(i);
         };
@@ -45,7 +45,7 @@ public class FLinkedListTest {
 
     @Test
     public void testLength() {
-        FLinkedList l = new FLinkedList();
+        FLinkedList<Integer> l = new FLinkedList<>();
         assertEquals(0, l.length());
         l.append(1);
         assertEquals(1, l.length());
