@@ -7,7 +7,7 @@ public class FLinkedList {
     }
 
     private Node head;
-    private int length;
+    int length;
 
     public int length() {
         return this.length;
