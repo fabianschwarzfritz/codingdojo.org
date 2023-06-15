@@ -27,6 +27,30 @@ public class FLinkedList {
             c.next.value = item;
         }
     }
+    
+    public void removeAt(int pos) {
+        if(pos < 0) {
+            return;
+        } else if (pos == 0) {
+            Node c = this.head;
+            this.head = this.head.next;
+            c.next = null;
+        } else {
+            Node c = this.head;
+            for (int i = 0; i < pos - 1; i++) {
+                if (c == null) {
+                    return;
+                }
+                c = c.next;
+            }
+            if (c.next != null) {
+                Node old = c.next;
+                c.next = c.next.next;
+                old.next = null;
+            }
+        }
+
+    }
 
     public int get(int pos) {
         if (pos < 0) {

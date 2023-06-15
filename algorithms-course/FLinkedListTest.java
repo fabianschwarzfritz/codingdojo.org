@@ -26,6 +26,24 @@ public class FLinkedListTest {
     }
 
     @Test
+    public void testDelete() {
+        FLinkedList l = new FLinkedList();
+        for (int i = 0; i < 10; i++) {
+            l.append(i);
+        };
+        l.removeAt(2);
+        assertEquals("[0,1,3,4,5,6,7,8,9,]", l.toString());
+        l.removeAt(7);
+        assertEquals("[0,1,3,4,5,6,7,9,]", l.toString());
+        l.removeAt(-1);
+        assertEquals("[0,1,3,4,5,6,7,9,]", l.toString());
+        l.removeAt(6);
+        assertEquals("[0,1,3,4,5,6,9,]", l.toString());
+        l.removeAt(6);
+        assertEquals("[0,1,3,4,5,6,]", l.toString());
+    }
+
+    @Test
     public void testLength() {
         FLinkedList l = new FLinkedList();
         assertEquals(0, l.length());
