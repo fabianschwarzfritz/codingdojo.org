@@ -129,5 +129,4 @@ public class BinaryTreeTest {
         boolean same = one.compareBinaryTree(two);
         assertEquals(false, same);
     }
-    
 }

@@ -1,14 +1,39 @@
 import java.lang.reflect.Array;
 
-public class BinaryTree<T> {
+public class BinaryTree<T extends Comparable<T>> {
 
-    public static class Node<T> {
+    public static class Node<T extends Comparable<T>> {
         T value;
         Node<T> left;
         Node<T> right;
     }
 
+    // For the Binary Search tree we need it to be comparable
     Node<T> root;
+
+    public boolean findInBinaryTree(T n) {
+        if (n == null) {
+            throw new RuntimeException("n cannot be null");
+        }
+
+        return this.recursiveFind(n, this.root);
+    }
+
+    public boolean recursiveFind(T n, Node<T> s) {
+        if (s == null) {
+            return false;
+        }
+        if (s.value.equals(n)) {
+            return true;
+        }
+
+        if (s.value.compareTo(n) < 0) {
+            return recursiveFind(n, s.right);
+        } else {
+            return recursiveFind(n, s.left);
+        }
+
+    }
 
     public boolean compareBinaryTree(BinaryTree<T> other) {
         return recurseCompare(this.root, other.root);
