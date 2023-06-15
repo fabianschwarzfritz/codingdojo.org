@@ -10,6 +10,29 @@ public class BinaryTree<T> {
 
     Node<T> root;
 
+    public boolean searchDFS(T needle) {
+        FStack<Node<T>> s = new FStack<>();
+
+        s.push(root);
+
+        while(s.peek() != null) {
+            Node<T> curr = s.pop();
+            if (curr.value.equals(needle)) {
+                return true;
+            }
+
+            if (curr.left != null) {
+                s.push(curr.left);
+            }
+
+            if (curr.right != null) {
+                s.push(curr.right);
+            }
+        }
+
+        return false;
+    }
+
     public boolean searchBFS(T n) {
         FQueue<Node<T>> q = new FQueue<Node<T>>();
 
@@ -17,7 +40,7 @@ public class BinaryTree<T> {
 
         while (q.peek() != null) {
             Node<T> next = q.dequeue();
-            if (next.value == n) {
+            if (next.value.equals(n)) {
                 return true;
             }
             if (next.left != null) {

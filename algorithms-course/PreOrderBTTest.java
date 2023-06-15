@@ -82,5 +82,19 @@ public class PreOrderBTTest {
         boolean contained = t.searchBFS(100);
         assertEquals(false, contained);
     }
+
+    @Test
+    public void testSearchDFS1() {
+        BinaryTree<Integer> t = sampleTree();
+        boolean contained = t.searchBFS(12);
+        assertEquals(true, contained);
+    }
+
+    @Test
+    public void testSearchDFS2() {
+        BinaryTree<Integer> t = sampleTree();
+        boolean contained = t.searchBFS(100);
+        assertEquals(false, contained);
+    }
     
 }
