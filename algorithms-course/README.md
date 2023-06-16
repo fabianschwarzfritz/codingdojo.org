@@ -4,6 +4,7 @@ TODO's
  - Implmement ArrayList
  - Implmement Ringbuffer
  - Finish Ringbuffer
+ - Implement binary search tree deletion
 
 Links
 ---------

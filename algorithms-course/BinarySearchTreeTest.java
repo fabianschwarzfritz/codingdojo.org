@@ -69,5 +69,18 @@ public class BinarySearchTreeTest {
         assertEquals(true, same);
     }
 
+    @Test
+    public void testBSTDelete() {
+        BinaryTree<Integer> b = sampleBindarySearchTree();
+        b.deleteBST(1);
+
+        BinaryTree<Integer> exp = sampleBindarySearchTree();
+        exp.root.left.left.left = null;
+
+        boolean same = b.compareBinaryTree(exp);
+        // assertEquals(true, same);
+
+    }
+
 
 }

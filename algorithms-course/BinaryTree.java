@@ -1,4 +1,7 @@
 import java.lang.reflect.Array;
+import java.security.NoSuchAlgorithmException;
+
+import javax.management.RuntimeErrorException;
 
 public class BinaryTree<T extends Comparable<T>> {
 
@@ -10,6 +13,11 @@ public class BinaryTree<T extends Comparable<T>> {
 
     // For the Binary Search tree we need it to be comparable
     Node<T> root;
+
+    public void deleteBST(T n) {
+        Exception e = new NoSuchAlgorithmException();
+        throw new RuntimeException(e);
+    }
 
     public void insertBST(T n) {
         recursiveInsertBST(n, null, root);
