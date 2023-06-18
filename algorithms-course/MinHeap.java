@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class MinHead<T extends Comparable<T>> {
+public class MinHeap<T extends Comparable<T>> {
 
     private List<T> data = new LinkedList<>();
 
@@ -39,7 +39,7 @@ public class MinHead<T extends Comparable<T>> {
         T current = this.data.get(idx);
         T parent = this.data.get(parentIndex(idx));
 
-        if (current.compareTo(parent) > 0) {
+        if (current.compareTo(parent) < 0) {
             this.data.set(idx, parent);
             this.data.set(parentIndex(idx), current);
             heapifyUp(parentIndex(idx));
@@ -62,11 +62,11 @@ public class MinHead<T extends Comparable<T>> {
         T leftValue = this.data.get(leftIdx);
         T rightValue = this.data.get(rightIdx);
 
-        if (leftValue.compareTo(rightValue) > 1 && currValue.compareTo(rightValue) > 1) {
+        if (leftValue.compareTo(rightValue) < 1 && currValue.compareTo(rightValue) < 1) {
             this.data.set(idx, rightValue);
             this.data.set(rightIdx, currValue);
             this.heapifyDown(rightIdx);
-        } else if (rightValue.compareTo(leftValue) > 1 && currValue.compareTo(leftValue) > 1) {
+        } else if (rightValue.compareTo(leftValue) < 1 && currValue.compareTo(leftValue) < 1) {
             this.data.set(idx, leftValue);
             this.data.set(leftIdx, currValue);
             this.heapifyDown(leftIdx);
@@ -90,7 +90,7 @@ public class MinHead<T extends Comparable<T>> {
     public String toString() {
         StringBuffer s = new StringBuffer();
         for (int i = 0; i < this.data.size(); i++) {
-            s.append(i);
+            s.append(data.get(i));
             s.append(",");
         }
         return s.toString();
