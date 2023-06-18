@@ -25,8 +25,8 @@ test("Parse variable declaration", () => {
         let a = 5;
     `;
 
-    const lexer = new Lexer();
-    lexer.parse(input);
+    const lexer = new Lexer(inpujt);
+    const token = lexer.nextToken();
 
     return false;
 });
