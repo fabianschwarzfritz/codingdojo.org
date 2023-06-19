@@ -1,5 +1,5 @@
 
-const { Lexer } = require("./Lexer");
+const { Lexer, Token, TokenType } = require("./Lexer");
 
 let testIndex = 1;
 
@@ -20,15 +20,30 @@ function test(desc, fn) {
     }
 }
 
+function assertTokenTypeEquals(expected, actual) {
+    if (!expected) {
+        throw new Error("Expected token type cannot be null");
+    }
+    if (!actual) {
+        throw new Error("Actual token type cannot be null");
+    }
+    if (expected.type !== actual.type) {
+        const msg = `Expected token type ${expected.type} to equal ${actual.type}`;
+        throw new Error(msg);
+    }
+}
+
 test("Parse variable declaration", () => {
     const input = `
-        let a = 5;
+        {};
     `;
 
-    const lexer = new Lexer(inpujt);
-    const token = lexer.nextToken();
+    const lexer = new Lexer(input);
+    assertTokenTypeEquals(new Token(TokenType.LSQIRLY), lexer.nextToken());
+    assertTokenTypeEquals(new Token(TokenType.RSQIRLY), lexer.nextToken());
+    assertTokenTypeEquals(new Token(TokenType.SEMI), lexer.nextToken());
 
-    return false;
+    return true;
 });
 
 
